@@ -19,6 +19,6 @@ class ThinkAliSms extends Facade
      */
     protected static function getFacadeClass()
     {
-        return 'alisms';
+        return 'bingher\sms\ThinkAliSms';
     }
 }
