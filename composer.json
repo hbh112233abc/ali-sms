@@ -1,0 +1,22 @@
+{
+    "name": "bingher/ali-sms",
+    "description": "send aliyun sms",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hbh112233abc",
+            "email": "hbh112233abc@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "alibabacloud/client": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "bingher\\sms\\": "src"
+        }
+    }
+}
