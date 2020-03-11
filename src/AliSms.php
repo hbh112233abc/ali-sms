@@ -22,7 +22,7 @@ class AliSms
         'access_key'    => '',
         'access_secret' => '',
     ];
-    protected $error;
+    protected $error             = 'not error';
     protected static $snakeCache = [];
 
     public function __construct($config = [])
@@ -57,8 +57,8 @@ class AliSms
         foreach ($templateParam as $k => $v) {
             $templateParam[$k] = empty($params[$k]) ? '' : $params[$k];
         }
-        if (empty($templateParam['product'])) {
-            $templateParam['product'] = $this->config['product'];
+        if (isset($templateParam['product'])) {
+            $templateParam['product'] = empty($arg['product']) ? $this->config['product'] : $arg['product'];
         }
         return $this->send($phoneNumber, $signName, $templateCode, $templateParam);
     }
