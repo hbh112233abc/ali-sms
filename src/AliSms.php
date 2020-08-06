@@ -146,7 +146,7 @@ class AliSms
         if (!ctype_lower($value)) {
             $value = preg_replace('/\s+/u', '', $value);
 
-            $value = mb_strtolower($value(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value)), 'UTF-8');
+            $value = mb_strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value), 'UTF-8');
         }
 
         return static::$snakeCache[$key][$delimiter] = $value;
