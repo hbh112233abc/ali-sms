@@ -64,6 +64,24 @@ $sms->changePassword('18759201xxx',['code'=>123456,'product'=>'xxx平台']);
 
 //AliSms中的短信方法可以根据actions配置自动匹配,如上配置有三个方法分别是:register,login,change_password,用户可以根据自己的业务需求增加其他配置
 ```
+
+## 链式调用
+```
+//基础用法
+\bingher\sms\facade\ThinkAliSms::template('模板编号',['code'=>'12345'])->mobile('18759201xxx')->send();
+//单独传参
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param('code','12345')->mobile('18759201xxx')->send();
+//数组传参,可以同时传入多个参数
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param(['code'=>'12345'])->mobile('18759201xxx')->send();
+//添加签名,默认是配置的product
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param(['code'=>'12345'])->sign('xxx平台')->mobile('18759201xxx')->send();
+//多个参数
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param('code','12345')->param('product','xxx平台')->mobile('18759201xxx')->send();
+//给多个号码发信息
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param(['code'=>'12345'])->mobile('18759201xxx')->mobile('13950804xxx')->send();
+\bingher\sms\facade\ThinkAliSms::template('模板编号')->param(['code'=>'12345'])->mobile(['18759201xxx','13950804xxx'])->send();
+```
+
 ## config remark
 |配置|类型|默认|必须配置|说明|
 |-|-|-|-|-|
@@ -75,6 +93,10 @@ $sms->changePassword('18759201xxx',['code'=>123456,'product'=>'xxx平台']);
 |access_secret|string||Y|你的阿里云accessSecrect|
 |product|string||Y|你的平台产品名称,actons中template_param参数product用的默认值|
 |actions|array||Y|操作配置,不同动作的配置数组,格式为`动作名=>配置项数组`,*动作名*请用全小写下划线格式,如:change_password,如此调用时可以访问`$sms->change_password(...);`亦可`$sms->changePassword(...);`,*配置项*内容请参考阿里云短信模板|
+|sign_name|string||N|短信签名,默认为空,如果未设置或者为空则取product值|
+|template_code|string||Y|短信模板编号|
+|template_param|array||Y|短信传参,根据模板详情设置|
+
 ## for thinkphp6
 ### step1 新增配置文件config/ali_sms.php
 ```
