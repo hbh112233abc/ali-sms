@@ -7,7 +7,7 @@ return [
     'region_id'     => 'cn-hangzhou',
     'access_key'    => 'your aliyun accessKeyId',
     'access_secret' => 'your aliyun accessSecret',
-    'product'       => '海迈电子档案平台',
+    'product'       => '产品名称(短信签名)',
     'actions'       => [
         'register'        => [
             'sign_name'      => '注册验证',

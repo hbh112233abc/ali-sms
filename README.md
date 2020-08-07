@@ -16,7 +16,7 @@ $config = [
     'region_id' => 'cn-hangzhou',
     'access_key' => 'your aliyun accessKeyId',
     'access_secret' => 'your aliyun accessSecret',
-    'product' => '海迈电子档案平台',
+    'product' => 'xxx平台',
     'actions' => [
         'register' => [
             'sign_name' => '注册验证',
@@ -108,7 +108,7 @@ return [
     'region_id' => 'cn-hangzhou',
     'access_key' => '',
     'access_secret' => '',
-    'product' => '海迈电子档案平台',
+    'product' => 'xxx平台',
     'actions' => [
         'register' => [
             'sign_name' => '注册验证',
