@@ -17,7 +17,7 @@
     "extra":{
         "think": {
             "config":{
-                "ali-sms": "src/config.php"
+                "ali_sms": "src/config.php"
             }
         }
     },
