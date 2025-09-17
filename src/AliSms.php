@@ -105,11 +105,11 @@ class AliSms
                     'query' => $query,
                 ])
                 ->request();
-            $result->toArray();
+            $result = $result->toArray();
             if ($result['Code'] != 'OK') {
                 throw new \Exception($result['Message']);
             }
-            return (array) $result;
+            return $result;
         } catch (ClientException $e) {
             $this->error = $e->getErrorMessage();
         } catch (ServerException $e) {
@@ -153,3 +153,4 @@ class AliSms
         return static::$snakeCache[$key][$delimiter] = $value;
     }
 }
+
