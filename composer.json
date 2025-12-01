@@ -14,6 +14,13 @@
         "php": ">=7.0",
         "alibabacloud/client": "^1.5"
     },
+    "extra":{
+        "think": {
+            "config":{
+                "ali_sms": "src/config.php"
+            }
+        }
+    },
     "autoload": {
         "psr-4": {
             "bingher\\sms\\": "src"
