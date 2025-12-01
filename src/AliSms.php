@@ -48,17 +48,17 @@ class AliSms
         if (empty($this->config['actions'][$fun])) {
             throw new \Exception('actions not found:' . $fun);
         }
-        $conf          = $this->config['actions'][$fun];
+        $conf          = (array) $this->config['actions'][$fun];
         $phoneNumber   = $args[0];
         $params        = $args[1];
         $templateCode  = $conf['template_code'];
         $signName      = $conf['sign_name'];
-        $templateParam = $conf['template_param'];
+        $templateParam = (array) $conf['template_param'];
         foreach ($templateParam as $k => $v) {
             $templateParam[$k] = empty($params[$k]) ? '' : $params[$k];
         }
         if (isset($templateParam['product'])) {
-            $templateParam['product'] = empty($arg['product']) ? $this->config['product'] : $arg['product'];
+            $templateParam['product'] = empty($templateParam['product']) ? $this->config['product'] : $templateParam['product'];
         }
         return $this->send($phoneNumber, $signName, $templateCode, $templateParam);
     }
@@ -104,7 +104,7 @@ class AliSms
                     'query' => $query,
                 ])
                 ->request();
-            $result->toArray();
+            $result = $result->toArray();
             if ($result['Code'] != 'OK') {
                 throw new \Exception($result['Message']);
             }
@@ -143,7 +143,7 @@ class AliSms
             return static::$snakeCache[$key][$delimiter];
         }
 
-        if (!ctype_lower($value)) {
+        if (! ctype_lower($value)) {
             $value = preg_replace('/\s+/u', '', $value);
 
             $value = mb_strtolower($value(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value)), 'UTF-8');
